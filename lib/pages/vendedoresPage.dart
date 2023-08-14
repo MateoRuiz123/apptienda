@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 
 class Vendedores extends StatelessWidget {
@@ -9,19 +7,10 @@ class Vendedores extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ventas'),
+        title: Text('Vendedores'),
       ),
-      body: Column(
-        children: <Widget>[
-          const Text('Estamos en ventas'),
-          // boton para volver a login
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, '/loginPage');
-            },
-            child: const Text('Vendedores'),
-          ),
-        ],
+      body: Center(
+        child: Text('Vendedores'),
       ),
     );
   }
