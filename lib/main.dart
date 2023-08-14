@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:apptienda/pages/perfilPage.dart';
 import 'package:apptienda/pages/powerPage.dart';
 import 'package:apptienda/pages/vendedoresPage.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/vendedores': (BuildContext context) => const Vendedores(),
         '/power': (BuildContext context) => const Power(),
         '/loginPage': (BuildContext context) => LoginPage(),
+        '/perfil': (BuildContext context) => Perfil(),
       },
     );
   }
@@ -41,6 +43,17 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
+}
+
+class UserData {
+  static final UserData _instance = UserData._internal();
+
+  factory UserData() => _instance;
+
+  UserData._internal();
+
+  String? username;
+  String? nivel;
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -76,9 +89,11 @@ class _LoginPageState extends State<LoginPage> {
       } else {
         // Manejar otros roles o mostrar un mensaje de error
       }
-      setState(() {
-        username = datauser['username'];
-      });
+      UserData().username = datauser['username'];
+      UserData().nivel = datauser['nivel'];
+      // setState(() {
+      //   username = datauser['username'];
+      // });
     } else {
       // Mostrar mensaje de error o manejar la respuesta incorrecta
     }
