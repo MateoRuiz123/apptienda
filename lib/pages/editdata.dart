@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:apptienda/pages/listarUsuarios.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -19,10 +17,10 @@ class _EditDataState extends State<EditData> {
   TextEditingController controllerPassword = TextEditingController();
   TextEditingController controllerNivel = TextEditingController();
 
-  void editData() {
+  Future<void> editData() async {
     var url = Uri.parse("http://10.170.83.22/tienda/editdata.php");
-    http.post(url, body: {
-      "id": widget.list[widget.index]['id'],
+    await http.post(url, body: {
+      "id": widget.list[widget.index]['id'].toString(),
       "username": controllerUsername.text,
       "password": controllerPassword.text,
       "nivel": controllerNivel.text,
@@ -100,12 +98,15 @@ class _EditDataState extends State<EditData> {
                 ElevatedButton(
                   child: const Text("Guardar"),
                   onPressed: () {
-                    editData();
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => const ListarUser(),
-                      ),
-                    );
+                    editData().then((_) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const ListarUser(),
+                        ),
+                      );
+                    }).catchError((error) {
+                      print("Error en la solicitud HTTP: $error");
+                    });
                   },
                 ),
               ],

@@ -14,8 +14,17 @@ class Detail extends StatefulWidget {
 
 class _DetailState extends State<Detail> {
   void deleteData() {
-    var url = Uri.parse("http://10.170.82.219/tienda/deleteData.php");
-    http.post(url, body: {'id': widget.list[widget.index]['id']});
+    var url = Uri.parse("http://10.170.83.22/tienda/deletedata.php");
+    http.post(
+      url,
+      body: {
+        'id': widget.list[widget.index]['id'].toString(),
+      },
+    ).then((response) {
+      print(response.body);
+    }).catchError((error) {
+      print("Error en la solicitud POST: $error");
+    });
   }
 
   void Confimar() {
@@ -25,7 +34,8 @@ class _DetailState extends State<Detail> {
       actions: [
         ElevatedButton(
           onPressed: () {
-            Navigator.of(context).push(
+            deleteData();
+            Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                   builder: (BuildContext context) => const ListarUser()),
             );
@@ -46,7 +56,6 @@ class _DetailState extends State<Detail> {
         return alertDialog;
       },
     );
-
   }
 
   @override
