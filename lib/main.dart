@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:apptienda/pages/listarUsuarios.dart';
 import 'package:apptienda/pages/perfilPage.dart';
 import 'package:apptienda/pages/powerPage.dart';
+import 'package:apptienda/pages/registroUsuarios.dart';
 import 'package:apptienda/pages/vendedoresPage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -29,12 +31,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login App',
-      home: LoginPage(),
+      home: const LoginPage(),
       routes: <String, WidgetBuilder>{
         '/vendedores': (BuildContext context) => const Vendedores(),
         '/power': (BuildContext context) => const Power(),
         '/loginPage': (BuildContext context) => const LoginPage(),
         '/perfil': (BuildContext context) => Perfil(),
+        'pages/listarUsuarios': (BuildContext context) => const ListarUser(),
+        'pages/registrarUsuarios': (BuildContext context) => const AddData()
       },
     );
   }
@@ -64,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _login() async {
     final response = await http.post(
-      Uri.parse('http://10.170.82.219/tienda/login.php'),
+      Uri.parse('http://10.170.83.22/tienda/login.php'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

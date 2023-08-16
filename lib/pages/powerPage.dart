@@ -41,22 +41,43 @@ class Power extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(2.0),
-            child: RawMaterialButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(
-                    context, '/pages/listarUsuarios');
-              },
-              shape: const CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              child: const Icon(
-                Icons.list,
-                color: Colors.blueAccent,
-                size: 73.0,
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(2.0),
+                child: RawMaterialButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(
+                        context, 'pages/listarUsuarios');
+                  },
+                  shape: const CircleBorder(),
+                  elevation: 2.0,
+                  fillColor: Colors.white,
+                  child: const Icon(
+                    Icons.list,
+                    color: Colors.blueAccent,
+                    size: 73.0,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                padding: const EdgeInsets.all(2.0),
+                child: RawMaterialButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(
+                        context, 'pages/registrarUsuarios');
+                  },
+                  shape: const CircleBorder(),
+                  elevation: 2.0,
+                  fillColor: Colors.white,
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.blueAccent,
+                    size: 73.0,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

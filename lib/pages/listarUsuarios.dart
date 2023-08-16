@@ -1,10 +1,10 @@
 import 'package:apptienda/pages/detail.dart';
+import 'package:apptienda/pages/powerPage.dart';
 import 'package:apptienda/pages/registroUsuarios.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-
 
 class ListarUser extends StatefulWidget {
   const ListarUser({super.key});
@@ -16,7 +16,7 @@ class ListarUser extends StatefulWidget {
 class _ListarUserState extends State<ListarUser> {
   Future<List> getData() async {
     final response =
-        await http.get(Uri.parse("http://10.170.82.219/tienda/getdata.php"));
+        await http.get(Uri.parse("http://10.170.83.22/tienda/getdata.php"));
     return json.decode(response.body);
   }
 
@@ -25,6 +25,15 @@ class _ListarUserState extends State<ListarUser> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Listado de Usuarios"),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // regresar a la pantalla anterior y refrescar
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => const Power(),
+            ));
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
@@ -60,6 +69,9 @@ class ItemList extends StatelessWidget {
     return ListView.builder(
       itemCount: list == null ? 0 : list.length,
       itemBuilder: (context, i) {
+        final nombre = list[i]['username'] ?? 'Nombre no disponible';
+        final nivel = list[i]['nivel'] ?? 'Nivel no disponible';
+
         return Container(
           padding: const EdgeInsets.all(10.0),
           child: GestureDetector(
@@ -74,7 +86,7 @@ class ItemList extends StatelessWidget {
             child: Card(
               child: ListTile(
                 title: Text(
-                  list[i]['nombre'],
+                  nombre,
                   style: const TextStyle(fontSize: 25.0, color: Colors.blue),
                 ),
                 leading: const Icon(
@@ -83,7 +95,7 @@ class ItemList extends StatelessWidget {
                   color: Colors.orangeAccent,
                 ),
                 subtitle: Text(
-                  "Nivel: ${list[i]['nivel']}",
+                  "Nivel: $nivel",
                   style: const TextStyle(fontSize: 20.0, color: Colors.black),
                 ),
               ),
