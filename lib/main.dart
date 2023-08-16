@@ -105,26 +105,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   appBar: AppBar(title: const Text('Login')),
-    //   body: Padding(
-    //     padding: const EdgeInsets.all(16.0),
-    //     child: Column(
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       children: <Widget>[
-    //         TextField(
-    //             controller: _usernameController,
-    //             decoration: const InputDecoration(labelText: 'Username')),
-    //         TextField(
-    //             controller: _passwordController,
-    //             decoration: const InputDecoration(labelText: 'Password')),
-    //         const SizedBox(height: 20),
-    //         ElevatedButton(onPressed: _login, child: const Text('Login')),
-    //       ],
-    //     ),
-    //   ),
-    // );
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Form(
