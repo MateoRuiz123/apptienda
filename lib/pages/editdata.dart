@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:apptienda/pages/listarUsuarios.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -39,6 +42,77 @@ class _EditDataState extends State<EditData> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Editar"),
+      ),
+      body: Form(
+        child: ListView(
+          padding: const EdgeInsets.all(10.0),
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                ListTile(
+                  leading: const Icon(Icons.person, color: Colors.black),
+                  title: TextFormField(
+                    controller: controllerUsername,
+                    validator: (value) {
+                      if (value!.isEmpty) return "Ingresa un usuario";
+                    },
+                    decoration: const InputDecoration(
+                      hintText: "Usuario",
+                      labelText: "Usuario",
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.location_on, color: Colors.black),
+                  title: TextFormField(
+                    controller: controllerPassword,
+                    validator: (value) {
+                      if (value!.isEmpty) return "Ingresa una contraseña";
+                    },
+                    decoration: const InputDecoration(
+                      hintText: "Contraseña",
+                      labelText: "Contraseña",
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.location_on, color: Colors.black),
+                  title: TextFormField(
+                    controller: controllerNivel,
+                    validator: (value) {
+                      if (value!.isEmpty) return "Ingresa un nivel";
+                    },
+                    decoration: const InputDecoration(
+                      hintText: "Nivel",
+                      labelText: "Nivel",
+                    ),
+                  ),
+                ),
+                const Divider(
+                  height: 1.0,
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
+                ),
+                ElevatedButton(
+                  child: const Text("Guardar"),
+                  onPressed: () {
+                    editData();
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const ListarUser(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

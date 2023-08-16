@@ -1,10 +1,10 @@
 import 'package:apptienda/pages/detail.dart';
+import 'package:apptienda/pages/registroUsuarios.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:http/http.dart%20';
 
 class ListarUser extends StatefulWidget {
   const ListarUser({super.key});
@@ -30,7 +30,7 @@ class _ListarUserState extends State<ListarUser> {
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => addData(),
+            builder: (BuildContext context) => AddData(),
           ));
         },
       ),
@@ -40,7 +40,7 @@ class _ListarUserState extends State<ListarUser> {
           if (snapshot.hasError) print(snapshot.error);
           return snapshot.hasData
               ? ItemList(
-                  list: snapshot.data,
+                  list: snapshot.data!,
                 )
               : const Center(
                   child: CircularProgressIndicator(),
@@ -53,7 +53,7 @@ class _ListarUserState extends State<ListarUser> {
 
 class ItemList extends StatelessWidget {
   final List list;
-  ItemList({this.list});
+  const ItemList({super.key, required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class ItemList extends StatelessWidget {
           child: GestureDetector(
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (Builder context) => Detail(
+                builder: (BuildContext context) => Detail(
                   list: list,
                   index: i,
                 ),

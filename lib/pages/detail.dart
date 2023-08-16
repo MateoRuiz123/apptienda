@@ -1,3 +1,4 @@
+import 'package:apptienda/pages/editdata.dart';
 import 'package:apptienda/pages/listarUsuarios.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -5,7 +6,7 @@ import 'package:http/http.dart' as http;
 class Detail extends StatefulWidget {
   List list;
   int index;
-  Detail({this.index, this.list});
+  Detail({super.key, required this.index, required this.list});
 
   @override
   State<Detail> createState() => _DetailState();
@@ -39,7 +40,13 @@ class _DetailState extends State<Detail> {
         ),
       ],
     );
-    showDialog(context: context, child: alertDialog);
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alertDialog;
+      },
+    );
+
   }
 
   @override
@@ -77,7 +84,7 @@ class _DetailState extends State<Detail> {
                     ElevatedButton(
                       onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (BuildContext context) => const EditData(
+                          builder: (BuildContext context) => EditData(
                             list: widget.list,
                             index: widget.index,
                           ),
@@ -85,7 +92,7 @@ class _DetailState extends State<Detail> {
                       ),
                       child: const Text("Editar"),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blueAccent,
+                        backgroundColor: Colors.blueAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -97,7 +104,7 @@ class _DetailState extends State<Detail> {
                       onPressed: () => Confimar(),
                       child: const Text("Eliminar"),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.redAccent,
+                        backgroundColor: Colors.redAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
