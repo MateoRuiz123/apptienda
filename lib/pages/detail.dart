@@ -3,6 +3,7 @@ import 'package:apptienda/pages/listarUsuarios.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+// ignore: must_be_immutable
 class Detail extends StatefulWidget {
   List list;
   int index;
@@ -21,12 +22,15 @@ class _DetailState extends State<Detail> {
         'id': widget.list[widget.index]['id'].toString(),
       },
     ).then((response) {
+      // ignore: avoid_print
       print(response.body);
     }).catchError((error) {
+      // ignore: avoid_print
       print("Error en la solicitud POST: $error");
     });
   }
 
+  // ignore: non_constant_identifier_names
   void Confimar() {
     AlertDialog alertDialog = AlertDialog(
       content: Text(
@@ -99,25 +103,25 @@ class _DetailState extends State<Detail> {
                           ),
                         ),
                       ),
-                      child: const Text("Editar"),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blueAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
+                      child: const Text("Editar"),
                     ),
                     const VerticalDivider(),
                     // boton eliminar con color redAccent y redondeado a 30.0
                     ElevatedButton(
                       onPressed: () => Confimar(),
-                      child: const Text("Eliminar"),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.redAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
+                      child: const Text("Eliminar"),
                     ),
                   ],
                 ),

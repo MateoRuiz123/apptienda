@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:apptienda/pages/listarUsuarios.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -14,7 +16,7 @@ class _AddDataState extends State<AddData> {
   TextEditingController controllerPassword = TextEditingController();
   TextEditingController controllerNivel = TextEditingController();
 
-  var _formkey = GlobalKey<FormState>();
+  final _formkey = GlobalKey<FormState>();
 
   void addData() {
     var url = Uri.parse("http://10.170.83.22/tienda/adddata.php");
@@ -30,12 +32,12 @@ class _AddDataState extends State<AddData> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Agregar datos"),
+        title: const Text("Agregar datos"),
       ),
       body: Form(
         key: _formkey,
         child: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           child: ListView(
             children: <Widget>[
               ListTile(
@@ -45,10 +47,11 @@ class _AddDataState extends State<AddData> {
                 ),
                 title: TextFormField(
                   controller: controllerUsername,
+                  // ignore: body_might_complete_normally_nullable
                   validator: (value) {
                     if (value == "") return "Ingresa un usuario";
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Usuario", hintText: "Ingresa un usuario"),
                 ),
               ),
@@ -59,10 +62,11 @@ class _AddDataState extends State<AddData> {
                 ),
                 title: TextFormField(
                   controller: controllerPassword,
+                  // ignore: body_might_complete_normally_nullable
                   validator: (value) {
                     if (value == "") return "Ingresa una contraseña";
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Contraseña",
                       hintText: "Ingresa una contraseña"),
                 ),
@@ -74,19 +78,19 @@ class _AddDataState extends State<AddData> {
                 ),
                 title: TextFormField(
                   controller: controllerNivel,
+                  // ignore: body_might_complete_normally_nullable
                   validator: (value) {
                     if (value == "") return "Ingresa un nivel";
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Nivel", hintText: "Ingresa un nivel"),
                 ),
               ),
               const Divider(
                 height: 1.0,
               ),
-              Padding(padding: const EdgeInsets.all(10.0)),
+              const Padding(padding: EdgeInsets.all(10.0)),
               ElevatedButton(
-                child: const Text("Agregar datos"),
                 onPressed: () {
                   if (_formkey.currentState!.validate()) {
                     addData();
@@ -105,10 +109,10 @@ class _AddDataState extends State<AddData> {
                     borderRadius: BorderRadius.circular(32.0),
                   ),
                 ),
+                child: const Text("Agregar datos"),
               ),
               // boton salir
               ElevatedButton(
-                child: const Text("Salir"),
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/powerPage');
                 },
@@ -120,6 +124,7 @@ class _AddDataState extends State<AddData> {
                     borderRadius: BorderRadius.circular(32.0),
                   ),
                 ),
+                child: const Text("Salir"),
               ),
             ],
           ),

@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 String username = '';
@@ -26,6 +26,8 @@ class MyHttpOverrides extends HttpOverrides {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
         '/vendedores': (BuildContext context) => const Vendedores(),
         '/power': (BuildContext context) => const Power(),
         '/loginPage': (BuildContext context) => const LoginPage(),
-        '/perfil': (BuildContext context) => Perfil(),
+        '/perfil': (BuildContext context) => const Perfil(),
         'pages/listarUsuarios': (BuildContext context) => const ListarUser(),
         'pages/registrarUsuarios': (BuildContext context) => const AddData()
       },

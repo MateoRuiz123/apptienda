@@ -1,14 +1,18 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import '../main.dart';
 
 class Perfil extends StatelessWidget {
+  const Perfil({super.key});
+
   @override
   Widget build(BuildContext context) {
     final userData = UserData(); // Acceder a los datos del usuario
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mi Perfil'),
+        title: const Text('Mi Perfil'),
       ),
       body: Center(
         child: Column(

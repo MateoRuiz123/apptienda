@@ -6,7 +6,7 @@ class EditData extends StatefulWidget {
   final List list;
   final int index;
 
-  EditData({required this.list, required this.index});
+  const EditData({super.key, required this.list, required this.index});
 
   @override
   State<EditData> createState() => _EditDataState();
@@ -54,6 +54,7 @@ class _EditDataState extends State<EditData> {
                   leading: const Icon(Icons.person, color: Colors.black),
                   title: TextFormField(
                     controller: controllerUsername,
+                    // ignore: body_might_complete_normally_nullable
                     validator: (value) {
                       if (value!.isEmpty) return "Ingresa un usuario";
                     },
@@ -67,6 +68,7 @@ class _EditDataState extends State<EditData> {
                   leading: const Icon(Icons.location_on, color: Colors.black),
                   title: TextFormField(
                     controller: controllerPassword,
+                    // ignore: body_might_complete_normally_nullable
                     validator: (value) {
                       if (value!.isEmpty) return "Ingresa una contraseña";
                     },
@@ -80,6 +82,7 @@ class _EditDataState extends State<EditData> {
                   leading: const Icon(Icons.location_on, color: Colors.black),
                   title: TextFormField(
                     controller: controllerNivel,
+                    // ignore: body_might_complete_normally_nullable
                     validator: (value) {
                       if (value!.isEmpty) return "Ingresa un nivel";
                     },
@@ -105,6 +108,7 @@ class _EditDataState extends State<EditData> {
                         ),
                       );
                     }).catchError((error) {
+                      // ignore: avoid_print
                       print("Error en la solicitud HTTP: $error");
                     });
                   },

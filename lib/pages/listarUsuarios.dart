@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:apptienda/pages/detail.dart';
 import 'package:apptienda/pages/powerPage.dart';
 import 'package:apptienda/pages/registroUsuarios.dart';
@@ -26,7 +28,7 @@ class _ListarUserState extends State<ListarUser> {
       appBar: AppBar(
         title: const Text("Listado de Usuarios"),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             // regresar a la pantalla anterior y refrescar
             Navigator.of(context).push(MaterialPageRoute(
@@ -39,13 +41,14 @@ class _ListarUserState extends State<ListarUser> {
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => AddData(),
+            builder: (BuildContext context) => const AddData(),
           ));
         },
       ),
       body: FutureBuilder<List>(
         future: getData(),
         builder: (context, snapshot) {
+          // ignore: avoid_print
           if (snapshot.hasError) print(snapshot.error);
           return snapshot.hasData
               ? ItemList(
@@ -67,6 +70,7 @@ class ItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      // ignore: unnecessary_null_comparison
       itemCount: list == null ? 0 : list.length,
       itemBuilder: (context, i) {
         final nombre = list[i]['username'] ?? 'Nombre no disponible';

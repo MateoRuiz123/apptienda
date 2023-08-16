@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 
 class Power extends StatelessWidget {
@@ -10,7 +12,7 @@ class Power extends StatelessWidget {
         title: const Text('Power'),
         actions: [
           IconButton(
-            icon: Icon(Icons.account_circle),
+            icon: const Icon(Icons.account_circle),
             onPressed: () {
               // Navegar a la página de perfil y pasar los datos del usuario
               Navigator.pushNamed(
@@ -20,13 +22,13 @@ class Power extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: Icon(Icons.exit_to_app),
+            icon: const Icon(Icons.exit_to_app),
             onPressed: () async {
               // Agregar aquí la lógica para cerrar sesión
               // Por ejemplo, eliminar las credenciales de inicio de sesión y navegar al login
 
               // Simulando un retraso para demostración
-              await Future.delayed(Duration(seconds: 1));
+              await Future.delayed(const Duration(seconds: 1));
 
               // Eliminar las credenciales de inicio de sesión
               // Por ejemplo, utilizando SharedPreferences o algún otro método
