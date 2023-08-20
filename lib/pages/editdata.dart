@@ -18,7 +18,7 @@ class _EditDataState extends State<EditData> {
   TextEditingController controllerNivel = TextEditingController();
 
   Future<void> editData() async {
-    var url = Uri.parse("http://10.170.83.22/tienda/editdata.php");
+    var url = Uri.parse("http:/192.168.1.54/tienda/editdata.php");
     await http.post(url, body: {
       "id": widget.list[widget.index]['id'].toString(),
       "username": controllerUsername.text,

@@ -19,7 +19,7 @@ class _AddDataState extends State<AddData> {
   final _formkey = GlobalKey<FormState>();
 
   void addData() {
-    var url = Uri.parse("http://10.170.83.22/tienda/adddata.php");
+    var url = Uri.parse("http://192.168.1.54/tienda/adddata.php");
 
     http.post(url, body: {
       "username": controllerUsername.text,

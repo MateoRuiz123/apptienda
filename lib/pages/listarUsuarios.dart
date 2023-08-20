@@ -18,7 +18,7 @@ class ListarUser extends StatefulWidget {
 class _ListarUserState extends State<ListarUser> {
   Future<List> getData() async {
     final response =
-        await http.get(Uri.parse("http://10.170.83.22/tienda/getdata.php"));
+        await http.get(Uri.parse("http://192.168.1.54/tienda/getdata.php"));
     return json.decode(response.body);
   }
 

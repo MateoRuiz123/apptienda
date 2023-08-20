@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _login() async {
     final response = await http.post(
-      Uri.parse('http://10.170.83.22/tienda/login.php'),
+      Uri.parse('http://192.168.1.54/tienda/login.php'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
